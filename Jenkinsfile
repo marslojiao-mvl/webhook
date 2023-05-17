@@ -38,15 +38,14 @@ node( 'built-in' ) {
       step([ $class: 'GitHubCommitStatusSetter',
              errorHandlers: [[ $class: "ChangingBuildStatusErrorHandler", result: "UNSTABLE" ]],
              statusBackrefSource: [ $class: "ManuallyEnteredBackrefSource", backref: "${BUILD_URL}console/" ],
-             statusResultSource: [
-               $class: 'ConditionalStatusResultSource',
-               results: [
-                          [
-                            $class  : 'AnyBuildResult',
-                            message : "${currentBuild.fullDisplayName} ${currentBuild.currentResult} !",
-                            state   : "${currentBuild.currentResult}"
-                          ]
-               ]
+             statusResultSource: [ $class: 'ConditionalStatusResultSource',
+                                   results: [
+                                              [
+                                                $class  : 'AnyBuildResult',
+                                                message : "${currentBuild.fullDisplayName} ${currentBuild.currentResult} !",
+                                                state   : "${currentBuild.currentResult}"
+                                              ]
+                                   ]
              ]
       ])
     }

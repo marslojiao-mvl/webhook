@@ -16,6 +16,9 @@ node( 'built-in' ) {
                ]]
              )
 
+
+    println 'hello world'
+
     if ( isPR ) {
       gitHubPRStatus githubPRMessage( "${env.GITHUB_PR_COND_REF} run started" )
       println ">> build triggered by : pull request."

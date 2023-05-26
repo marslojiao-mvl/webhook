@@ -4,6 +4,8 @@ node( 'built-in' ) {
   Boolean isPR = env?.GITHUB_PR_TARGET_BRANCH ?: false
   try {
     cleanWs()
+    println '-'*100
+
     checkout scmGit(
                branches: [[ name: "origin-pull/$GITHUB_PR_NUMBER/$GITHUB_PR_COND_REF" ]],
                browser: github( 'https://github.com/marslojiao-mvl/webhook' ),
